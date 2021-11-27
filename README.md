@@ -4,7 +4,7 @@ Not a production app.
 
 Just a really simple CRM with settings.py included.
 Along with media files and a sql.lite DB to save time from adding content
-As well as a mock xls file for testing uploads
+As well as a mock xls file for testing uploads: "names.xlsx"
 
 ###Easy set up:
 Download files
