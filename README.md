@@ -1,40 +1,20 @@
 # reallysimplecrm
 
-###### to settings.py:
-```
-from django.contrib.messages import constants as messages
+Not a production app.
 
-INSTALLED_APPS = [
-  
-    'widget_tweaks',
-    'accounts',
-    'crm',
-    'basicpages',
-    'openpyxl',
-]
+Just a really simple CRM with settings.py included.
+Along with media files and a sql.lite DB to save time from adding content
+As well as a mock xls file for testing uploads
 
-TEMPLATES = [
-    {
-        'DIRS': [
-            BASE_DIR / 'templates/',
-        ],
-        'APP_DIRS': True,
-    },
-]
+###Easy set up:
+Download files
+1. Set up vitual evn
+2. pip install -r requirements.txt
+3. py manage.py migrate
+4. py manage.py runserver
 
+Logins are:
+jeremy
+matt
 
-AUTH_USER_MODEL = 'accounts.User'
-
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / 'media'
-
-
-LOGOUT_REDIRECT_URL = 'home'
-LOGIN_REDIRECT_URL = 'dashboard'
-
-MESSAGE_TAGS = {
-    messages.SUCCESS: 'alert-success',
-}
-```
-
+passwords for both: simplecrm
