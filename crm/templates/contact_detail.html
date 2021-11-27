@@ -1,0 +1,67 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block title %}View Contact{% endblock title %}
+
+{% block main_content %}
+
+    <div class="d-flex flex-row-reverse my-2"> 
+        <a class="btn btn-sm btn-primary" href="{% url 'contact_new' %}"><i class="fas fa-plus"></i> New Contact</a>
+    </div>
+
+   
+    <div class="col-xl-6 mx-auto">
+    
+    <div class="card mb-3">
+
+        <div class="card-header">
+             <div class="d-flex justify-content-between my-2"> 
+            <h3 class="">{{ first_name}} {{ last_name }}</h3>
+            <div>
+            {% if can_send_postcard %}
+            <a class="btn btn-sm btn-info" href="{% url 'send_postcard' pk=object.pk %}">Send Postcard</a>
+            {% endif %}
+            <a class="btn btn-sm btn-success" href="{% url 'contact_edit' pk=object.pk %}">Edit</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'contact_delete' pk=object.pk %}">Delete</a>
+            </div>
+        </div>
+           
+        </div>
+
+        <div class="card-body">
+            {% if profile_picture %}
+                <img class ="img-thumbnail" src="/media/{{ profile_picture }}">
+            {% endif %}
+            <p>{{email}}</p>
+            <p>{{address1}}</p>
+            <p>{{address2}}</p>
+            <p>{{city}}</p>
+            <p>{{state}}</p>
+            <p>{{zip_code}}</p>
+        </div>
+
+        <div class="card-footer">
+            <p>Created by: {{created_by}}</p>    
+            <p>Last Updated: {{modified_at|date:"F d, Y"}}</p>
+        </div>
+
+    </div>
+    
+    
+    {% if postcards %} 
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3 class="">Sent Postcards On:</h3>
+        </div>
+
+        <div class="card-body">
+            {% for card in postcards %}
+                <p>{{ card.time_sent|date:"F d, Y" }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    
+
+
+{% endblock main_content %}

@@ -1,0 +1,35 @@
+{% extends 'dashboard.html' %}
+
+{% block main_content %}
+<a class="btn btn-block btn-secondary my-2" href="{% url 'dashboard' %}"><i class="fa fa-arrow-left"></i> Dashboard</a>
+    <div class="col-xl-6 mx-auto">
+    <h3 class="mt-4">Import from Excel</h3>
+    <p>Please ensure the first row is the headers and one sheet in the file. First and Last Names are required, rest are optional. Columns should match the following sequence (left to right):</p>
+    <ul>
+    <li>First name</li>
+    <li>Last name</li>
+    <li>Address 1</li>
+    <li>Address 2</li>
+    <li>City</li>
+    <li>State</li>
+    <li>Zip code</li>
+    </ul>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <form enctype='multipart/form-data' method="POST">
+                {% csrf_token %}
+
+                <input type="file" name="xls">
+
+                <div class="mt-4 mb-0">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-block" >Import</button>
+                    </div>
+                </div>   
+            </form>
+        </div>
+    </div>
+
+    </div>
+{% endblock main_content %}

@@ -1,0 +1,49 @@
+{% extends 'dashboard.html' %}
+{% block title %}Confirm Delete{% endblock title %}
+
+{% block main_content %}
+<a class="btn btn-block btn-secondary my-2" href="{% url 'contact_detail' pk=object.pk %}"><i class="fa fa-arrow-left"></i> Back Contact Details</a>
+
+<div class="col-xl-6 mx-auto">
+
+    <div class="card mb-3 my-3">
+    
+        <div class="card-header">
+            <h3>Send Post Card To: {{ object.first_name}} {{ object.last_name }}</h3>
+        </div>   
+        <div class="card-body">
+    
+    {% if can_send %}
+            <h5>Will be sent to:</h5>
+            <p>{{ object.address1 }}</p>
+            <p>{{ object.city }}</p>
+            <p>{{ object.state }}</p>
+            <p>{{ object.zip_code }}</p>
+            <form method="post">
+            {% csrf_token %}
+            <div class="text-center">
+                <button class="btn btn-block btn-success" type="submit" value="Confirm">Send Now</button>
+            </div>
+            </form>
+    {% else %}
+            <h5>You must add a complete address to send a post card</h5>
+            <a class="btn btn-success stretched-link" href="{% url 'contact_edit' pk=object.pk %}">Edit Contact</a>
+    {% endif %}
+        
+         
+
+        
+            
+        </div>
+
+    </div>
+</div>
+
+    
+
+    
+
+    
+    
+
+{% endblock main_content %}

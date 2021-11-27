@@ -1,0 +1,23 @@
+{% extends 'dashboard.html' %}
+
+{% block main_content %}
+<a class="btn btn-block btn-secondary my-2" href="{% url 'dashboard' %}"><i class="fa fa-arrow-left"></i> Dashboard</a>
+    <div class="col-xl-6 mx-auto">
+    <h3 class="mt-4">{{ form_title }}</h3>
+    
+    <div class="card mb-3">
+        <div class="card-body">
+            <form enctype='multipart/form-data' method="POST">
+                {% csrf_token %}
+                {% include 'form.html' %}
+                <div class="mt-4 mb-0">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-block" >Save</button>
+                    </div>
+                </div>   
+            </form>
+        </div>
+    </div>
+
+    </div>
+{% endblock main_content %}
